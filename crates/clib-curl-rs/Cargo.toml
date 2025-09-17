@@ -1,0 +1,10 @@
+[package]
+name = "clib-curl-rs"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+lib-curl-rs = { path = "../lib-curl-rs"}
+
+[build-dependencies]
+cbindgen = { version = "0.29.0", default-features = false, features = ["unstable_ir"] }

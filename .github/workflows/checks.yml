@@ -1,0 +1,29 @@
+name: Pr Checks
+on: 
+  pull_request:
+
+jobs:
+  nix:
+    name: Nix Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - name: Run nix flake check
+        run: nix flake check --all-systems
+
+  rust:
+    name: Rust Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Check formatting
+        uses: actions-rust-lang/rustfmt@v1
+      - name: Run Tests
+        run: cargo tests --all-features
+      - name: Audit for security issues 
+        uses: actions-rust-lang/audit@v1

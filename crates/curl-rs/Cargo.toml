@@ -1,0 +1,6 @@
+[package]
+name = "curl-rs"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
