@@ -1,0 +1,10 @@
+[package]
+name = "curl-rs"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "curl"
+path = "./src/main.rs"
+
+[dependencies]

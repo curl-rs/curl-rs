@@ -1,0 +1,7 @@
+[workspace]
+members = ["crates/*"]
+default-members = ["crates/curl-rs", "crates/lib-curl-rs"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
